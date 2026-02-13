@@ -9,7 +9,9 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -27,11 +29,16 @@ public class Usuario implements UserDetails {
 
     private String senha;
 
-    public Usuario(Long id, String nome, String email, String senha) {
+    @ElementCollection(fetch = FetchType.EAGER)
+    @Enumerated(EnumType.STRING)
+    private Set<Role> roles = new HashSet<>();
+
+    public Usuario(Long id, String nome, String email, String senha, Set<Role> roles) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
+        this.roles = roles;
     }
 
     public Usuario() {
