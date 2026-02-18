@@ -24,9 +24,9 @@ public class AuthService implements UserDetailsService {
         this.usuarioRepository = usuarioRepository;
         this.passwordEncoder = passwordEncoder;
     }
-
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return null;
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        return UsuarioRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado"));
     }
 }
