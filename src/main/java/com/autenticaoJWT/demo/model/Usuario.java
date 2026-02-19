@@ -2,6 +2,7 @@ package com.autenticaoJWT.demo.model;
 
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import org.jspecify.annotations.Nullable;
@@ -17,6 +18,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
+@Builder
 public class Usuario implements UserDetails {
 
     @Id
