@@ -14,12 +14,20 @@ import java.util.Set;
 @Service
 public class UsuarioService {
 
-    @Autowired
+
     private UsuarioRepository usuarioRepository;
 
-    @Autowired
+
     private PasswordEncoder passwordEncoder;
 
+
+    public UsuarioService(UsuarioRepository usuarioRepository, PasswordEncoder passwordEncoder) {
+        this.usuarioRepository = usuarioRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
+
+    public UsuarioService() {
+    }
 
     public RegisterResponseDto register(RegisterRequestDto dto) {
         if (usuarioRepository.findByEmail(dto.email()).isPresent()) {
@@ -44,5 +52,7 @@ public class UsuarioService {
 
         return new RegisterResponseDto(saved.getNome(),saved.getEmail());
     }
+
+
 
 }
