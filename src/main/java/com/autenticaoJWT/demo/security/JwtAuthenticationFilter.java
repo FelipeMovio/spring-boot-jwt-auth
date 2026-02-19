@@ -1,7 +1,5 @@
 package com.autenticaoJWT.demo.security;
 
-import com.autenticaoJWT.demo.service.AuthService;
-
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,7 +18,7 @@ import java.io.IOException;
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtService jwtService;
-    private final AuthService userDetailsService;
+    private final AuthConfig userDetailsService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,

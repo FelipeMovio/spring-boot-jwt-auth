@@ -1,6 +1,5 @@
-package com.autenticaoJWT.demo.service;
+package com.autenticaoJWT.demo.security;
 
-import com.autenticaoJWT.demo.model.Usuario;
 import com.autenticaoJWT.demo.repository.UsuarioRepository;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,13 +13,13 @@ import org.springframework.stereotype.Service;
 @Service
 @Getter
 @Setter
-public class AuthService implements UserDetailsService {
+public class AuthConfig implements UserDetailsService {
 
     private UsuarioRepository usuarioRepository;
 
     private PasswordEncoder passwordEncoder;
 
-    public AuthService(UsuarioRepository usuarioRepository, PasswordEncoder passwordEncoder) {
+    public AuthConfig(UsuarioRepository usuarioRepository, PasswordEncoder passwordEncoder) {
         this.usuarioRepository = usuarioRepository;
         this.passwordEncoder = passwordEncoder;
     }
