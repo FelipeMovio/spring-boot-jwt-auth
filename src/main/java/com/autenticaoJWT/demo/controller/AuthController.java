@@ -5,7 +5,7 @@ import com.autenticaoJWT.demo.DTO.request.RegisterRequestDto;
 import com.autenticaoJWT.demo.DTO.response.LoginResponseDto;
 import com.autenticaoJWT.demo.DTO.response.RegisterResponseDto;
 import com.autenticaoJWT.demo.model.Usuario;
-import com.autenticaoJWT.demo.security.TokenConfig;
+import com.autenticaoJWT.demo.config.TokenConfig;
 import com.autenticaoJWT.demo.service.UsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

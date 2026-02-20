@@ -1,4 +1,4 @@
-package com.autenticaoJWT.demo.security;
+package com.autenticaoJWT.demo.config;
 
 import com.autenticaoJWT.demo.model.Usuario;
 import com.auth0.jwt.JWT;
