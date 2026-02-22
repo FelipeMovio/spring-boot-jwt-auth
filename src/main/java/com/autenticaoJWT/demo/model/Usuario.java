@@ -44,6 +44,8 @@ public class Usuario implements UserDetails {
         this.roles = roles;
     }
 
+    public Usuario() {
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
