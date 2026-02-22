@@ -15,10 +15,10 @@ import java.util.Set;
 public class UsuarioService {
 
 
-    private UsuarioRepository usuarioRepository;
+    private final UsuarioRepository usuarioRepository;
 
 
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
 
     public UsuarioService(UsuarioRepository usuarioRepository, PasswordEncoder passwordEncoder) {
@@ -26,18 +26,10 @@ public class UsuarioService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public UsuarioService() {
-    }
 
     public RegisterResponseDto register(RegisterRequestDto dto) {
         if (usuarioRepository.findByEmail(dto.email()).isPresent()) {
             throw new RuntimeException("E-mail já cadastrado!");
-        }
-        Role role;
-        if (dto.role() != null) {
-            role = dto.role();
-        } else {
-            role = Role.ROLE_USER;
         }
 
 
@@ -45,7 +37,7 @@ public class UsuarioService {
                 .nome(dto.nome())
                 .email(dto.email())
                 .senha(passwordEncoder.encode(dto.senha()))
-                .roles(Set.of(role))
+                .roles(Set.of(Role.ROLE_USER))
                 .build();
 
         Usuario saved = usuarioRepository.save(newUser);
