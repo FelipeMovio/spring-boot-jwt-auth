@@ -19,6 +19,7 @@ public class AdminController {
     }
 
     @PostMapping("/create-admin")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<RegisterResponseDto> createAdmin(
             @RequestBody @Valid AdminCreateUserRequestDto dto) {
 
