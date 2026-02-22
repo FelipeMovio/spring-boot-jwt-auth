@@ -1,10 +1,17 @@
 package com.autenticaoJWT.demo.DTO.request;
 
-import com.autenticaoJWT.demo.model.Role;
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
-public record RegisterRequestDto(@NotEmpty(message = "Email é obrigatorio") String email,
-                                 @NotEmpty(message = "senha obrigatoria ") String senha ,
-                                 @NotEmpty(message = "nome obrigatorio") String nome,
-                                 Role role) {
-}
+public record RegisterRequestDto(
+
+        @Email(message = "Email inválido")
+        @NotBlank(message = "Email é obrigatório")
+        String email,
+
+        @NotBlank(message = "Senha obrigatória")
+        String senha,
+
+        @NotBlank(message = "Nome obrigatório")
+        String nome
+) {}
