@@ -1,5 +1,6 @@
 package com.autenticaoJWT.demo.service;
 
+import com.autenticaoJWT.demo.DTO.request.AdminCreateUserRequestDto;
 import com.autenticaoJWT.demo.DTO.request.RegisterRequestDto;
 import com.autenticaoJWT.demo.DTO.response.RegisterResponseDto;
 import com.autenticaoJWT.demo.model.Role;
@@ -44,6 +45,25 @@ public class UsuarioService {
 
         return new RegisterResponseDto(saved.getNome(),saved.getEmail());
     }
+
+    public RegisterResponseDto createAdmin(AdminCreateUserRequestDto dto) {
+
+        if (usuarioRepository.findByEmail(dto.email()).isPresent()) {
+            throw new RuntimeException("E-mail já cadastrado!");
+        }
+
+        Usuario admin = Usuario.builder()
+                .nome(dto.nome())
+                .email(dto.email())
+                .senha(passwordEncoder.encode(dto.senha()))
+                .roles(Set.of(Role.ROLE_ADMIN))
+                .build();
+
+        Usuario saved = usuarioRepository.save(admin);
+
+        return new RegisterResponseDto(saved.getNome(), saved.getEmail());
+    }
+
 
 
 
