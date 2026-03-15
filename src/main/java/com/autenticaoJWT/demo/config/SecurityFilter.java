@@ -15,9 +15,11 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
+
+//intercepta requisições
 @Component
 public class SecurityFilter extends OncePerRequestFilter {
-
+// o uso de OncePerRequestFilter isso garante que o filtro execute uma vez por request
     private TokenConfig tokenConfig;
 
 

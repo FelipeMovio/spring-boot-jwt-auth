@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 import java.time.Instant;
 import java.util.Optional;
 
+
+// gera e valida o token
 @Component
 public class TokenConfig {
 
